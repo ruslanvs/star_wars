@@ -10,7 +10,6 @@ import UIKit
 
 class PeopleTableViewController: UITableViewController {
     
-//    var people = ["Luke Skywalker", "Leia Organa", "Han Solo", "C-3PO", "R2-D2"]
     var people = [String]()
 
     override func viewDidLoad() {
@@ -41,13 +40,13 @@ class PeopleTableViewController: UITableViewController {
 //            } catch {
 //                print( error )
 //            }
-//            print( "count is: \(self.people.count)" )
+//            print( "people count is: \(self.people.count)" )
 //        } )
 //        task.resume()
-        recurciveCall( url: url )
+        recursiveQuery( url: url )
     }
     
-    func recurciveCall( url: URL? ){
+    func recursiveQuery( url: URL? ){
         let session = URLSession.shared
         let task = session.dataTask( with: url!, completionHandler: {
             data, response, error in
@@ -67,7 +66,7 @@ class PeopleTableViewController: UITableViewController {
                     }
                     if let n = jsonResult["next"] as? String {
                         let u = URL( string: n )
-                        self.recurciveCall( url: u )
+                        self.recursiveQuery( url: u )
                     }
                 }
             } catch {

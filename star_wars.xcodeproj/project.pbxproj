@@ -15,6 +15,7 @@
 		A66AE27820606D9E003E33B5 /* star_warsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A66AE27720606D9E003E33B5 /* star_warsTests.swift */; };
 		A66AE28320606D9E003E33B5 /* star_warsUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A66AE28220606D9E003E33B5 /* star_warsUITests.swift */; };
 		A66AE29120606E5F003E33B5 /* PeopleTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A66AE29020606E5F003E33B5 /* PeopleTableViewController.swift */; };
+		A695E9AB2060950100C78EEB /* FilmsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A695E9AA2060950100C78EEB /* FilmsTableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +50,7 @@
 		A66AE28220606D9E003E33B5 /* star_warsUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = star_warsUITests.swift; sourceTree = "<group>"; };
 		A66AE28420606D9E003E33B5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A66AE29020606E5F003E33B5 /* PeopleTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeopleTableViewController.swift; sourceTree = "<group>"; };
+		A695E9AA2060950100C78EEB /* FilmsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilmsTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -102,6 +104,7 @@
 				A66AE29020606E5F003E33B5 /* PeopleTableViewController.swift */,
 				A66AE25F20606D9E003E33B5 /* AppDelegate.swift */,
 				A66AE26320606D9E003E33B5 /* Main.storyboard */,
+				A695E9AA2060950100C78EEB /* FilmsTableViewController.swift */,
 				A66AE26920606D9E003E33B5 /* Assets.xcassets */,
 				A66AE26B20606D9E003E33B5 /* LaunchScreen.storyboard */,
 				A66AE26E20606D9E003E33B5 /* Info.plist */,
@@ -265,6 +268,7 @@
 				A66AE26820606D9E003E33B5 /* star_wars.xcdatamodeld in Sources */,
 				A66AE29120606E5F003E33B5 /* PeopleTableViewController.swift in Sources */,
 				A66AE26020606D9E003E33B5 /* AppDelegate.swift in Sources */,
+				A695E9AB2060950100C78EEB /* FilmsTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
