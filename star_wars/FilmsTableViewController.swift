@@ -6,6 +6,8 @@
 //  Copyright © 2018 Ruslan Suvorov. All rights reserved.
 //
 
+// NON RECURSIVE, MODULARIZED
+
 import UIKit
 
 class FilmsTableViewController: UITableViewController {
@@ -14,42 +16,24 @@ class FilmsTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        let url = URL( string: "http://swapi.co/api/films/" )
-        recursiveQuery( url: url )
-    }
-
-    func recursiveQuery( url: URL? ){
-        let session = URLSession.shared
-        let task = session.dataTask( with: url!, completionHandler:{
-            data, response, error in
-            do {
-                if let jsonResult = try JSONSerialization.jsonObject( with: data!, options: JSONSerialization.ReadingOptions.mutableContainers ) as? NSDictionary {
-                    if let results = jsonResult["results"] {
-
-                        let resultsArray = results as! NSArray
-
-                        for i in resultsArray {
-                            let film = ( i as! NSDictionary  )["title"] as! String
-                            self.films.append( film )
+        
+        StarWarsModel.getAllFilms(completionHandler: { data, response, error in do {
+                if let jsonResult = try JSONSerialization.jsonObject(with: data!, options: JSONSerialization.ReadingOptions.mutableContainers ) as? NSDictionary {
+                    if let results = jsonResult["results"] as? NSArray {
+                        for film in results {
+                            let filmDict = film as! NSDictionary
+                            self.films.append( filmDict["title"]! as! String )
                         }
-                        DispatchQueue.main.async {
-                            self.tableView.reloadData()
-                        }
-                    }
-                    if let n = jsonResult["next"] as? String {
-                        let u = URL( string: n )
-                        self.recursiveQuery( url: u )
                     }
                 }
+                DispatchQueue.main.async {
+                    self.tableView.reloadData()
+                }
             } catch {
-                print( error )
+                print( "Something went wrong" )
             }
-            print( "film count is: \(self.films.count)" )
-        } )
-        task.resume()
+        })
     }
-
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

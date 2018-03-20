@@ -6,6 +6,8 @@
 //  Copyright © 2018 Ruslan Suvorov. All rights reserved.
 //
 
+// RECURSIVE, KIND OF MODULARIZED
+
 import UIKit
 
 class PeopleTableViewController: UITableViewController {
@@ -14,67 +16,32 @@ class PeopleTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         let url = URL( string: "http://swapi.co/api/people/" )
-//        let session = URLSession.shared
-//        let task = session.dataTask( with: url!, completionHandler: {
-//            data, response, error in
-//            do {
-//                if let jsonResult = try JSONSerialization.jsonObject( with: data!, options: JSONSerialization.ReadingOptions.mutableContainers ) as? NSDictionary {
-//                    if let results = jsonResult["results"] {
-//
-//                        let resultsArray = results as! NSArray
-//
-//                        for p in resultsArray {
-//                            let name = (p as! NSDictionary )["name"] as! String
-//                            self.people.append( name )
-//                        }
-//                        DispatchQueue.main.async {
-//                            self.tableView.reloadData()
-//                        }
-//                    }
-//                    print( jsonResult )
-//                    print( jsonResult["next"]! )
-//                    print( jsonResult["count"]! )
-//                }
-//            } catch {
-//                print( error )
-//            }
-//            print( "people count is: \(self.people.count)" )
-//        } )
-//        task.resume()
         recursiveQuery( url: url )
     }
     
     func recursiveQuery( url: URL? ){
-        let session = URLSession.shared
-        let task = session.dataTask( with: url!, completionHandler: {
-            data, response, error in
-            do {
-                if let jsonResult = try JSONSerialization.jsonObject( with: data!, options: JSONSerialization.ReadingOptions.mutableContainers ) as? NSDictionary {
-                    if let results = jsonResult["results"] {
-                        
-                        let resultsArray = results as! NSArray
-                        
-                        for p in resultsArray {
-                            let name = (p as! NSDictionary )["name"] as! String
-                            self.people.append( name )
-                        }
-                        DispatchQueue.main.async {
-                            self.tableView.reloadData()
+        StarWarsModel.getAllPeople(  url, completionHandler: { data, response, error in do {
+                if let jsonResult = try JSONSerialization.jsonObject(with: data!, options: JSONSerialization.ReadingOptions.mutableContainers ) as? NSDictionary {
+                    if let results = jsonResult["results"] as? NSArray {
+                        for person in results {
+                            let personDict = person as! NSDictionary
+                            self.people.append( personDict["name"]! as! String )
                         }
                     }
-                    if let n = jsonResult["next"] as? String {
-                        let u = URL( string: n )
-                        self.recursiveQuery( url: u )
-                    }
+                if let n = jsonResult["next"] as? String {
+                    let u = URL( string: n )
+                    self.recursiveQuery( url: u )
+                }
+                }
+                DispatchQueue.main.async {
+                    self.tableView.reloadData()
                 }
             } catch {
-                print( error )
+                print( "Something went wrong" )
             }
-            print( "count is: \(self.people.count)" )
-        } )
-        task.resume()
+        })
+        
     }
 
     override func didReceiveMemoryWarning() {
