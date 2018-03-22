@@ -18,6 +18,7 @@
 		A695E9AB2060950100C78EEB /* FilmsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A695E9AA2060950100C78EEB /* FilmsTableViewController.swift */; };
 		A695E9AF20617A6100C78EEB /* StarWarsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A695E9AE20617A6100C78EEB /* StarWarsModel.swift */; };
 		A695E9B12061A3BE00C78EEB /* PlanetsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A695E9B02061A3BE00C78EEB /* PlanetsTableViewController.swift */; };
+		A695E9B32061B8A100C78EEB /* Person.swift in Sources */ = {isa = PBXBuildFile; fileRef = A695E9B22061B8A100C78EEB /* Person.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,6 +56,7 @@
 		A695E9AA2060950100C78EEB /* FilmsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilmsTableViewController.swift; sourceTree = "<group>"; };
 		A695E9AE20617A6100C78EEB /* StarWarsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarWarsModel.swift; sourceTree = "<group>"; };
 		A695E9B02061A3BE00C78EEB /* PlanetsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanetsTableViewController.swift; sourceTree = "<group>"; };
+		A695E9B22061B8A100C78EEB /* Person.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Person.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -108,6 +110,7 @@
 				A66AE29020606E5F003E33B5 /* PeopleTableViewController.swift */,
 				A66AE25F20606D9E003E33B5 /* AppDelegate.swift */,
 				A66AE26320606D9E003E33B5 /* Main.storyboard */,
+				A695E9B22061B8A100C78EEB /* Person.swift */,
 				A695E9B02061A3BE00C78EEB /* PlanetsTableViewController.swift */,
 				A695E9AE20617A6100C78EEB /* StarWarsModel.swift */,
 				A695E9AA2060950100C78EEB /* FilmsTableViewController.swift */,
@@ -275,6 +278,7 @@
 				A66AE29120606E5F003E33B5 /* PeopleTableViewController.swift in Sources */,
 				A695E9AF20617A6100C78EEB /* StarWarsModel.swift in Sources */,
 				A66AE26020606D9E003E33B5 /* AppDelegate.swift in Sources */,
+				A695E9B32061B8A100C78EEB /* Person.swift in Sources */,
 				A695E9B12061A3BE00C78EEB /* PlanetsTableViewController.swift in Sources */,
 				A695E9AB2060950100C78EEB /* FilmsTableViewController.swift in Sources */,
 			);

@@ -13,6 +13,9 @@ import UIKit
 class PeopleTableViewController: UITableViewController {
     
     var people = [String]()
+    var peopleDict = [NSDictionary]()
+    var row = Int()
+//    var person =
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,11 +26,19 @@ class PeopleTableViewController: UITableViewController {
     func recursiveQuery( url: URL? ){
         StarWarsModel.getAllPeople(  url, completionHandler: { data, response, error in do {
                 if let jsonResult = try JSONSerialization.jsonObject(with: data!, options: JSONSerialization.ReadingOptions.mutableContainers ) as? NSDictionary {
-                    if let results = jsonResult["results"] as? NSArray {
+                    if let results = jsonResult["results"] as? [NSDictionary] {
+
+//                        self.peopleDict = results
+                        
                         for person in results {
-                            let personDict = person as! NSDictionary
+                            let personDict = person
                             self.people.append( personDict["name"]! as! String )
                         }
+                        
+                        for person in results {
+                            self.peopleDict.append( person )
+                        }
+                        
                     }
                 if let n = jsonResult["next"] as? String {
                     let u = URL( string: n )
@@ -59,9 +70,33 @@ class PeopleTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 //        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
         let cell = UITableViewCell()
+//        print( people )
         
         cell.textLabel?.text = people[indexPath.row]
         
         return cell
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow( at: indexPath, animated: true )
+        row = indexPath.row
+        performSegue( withIdentifier: "personSegue", sender: indexPath )
+        
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let navigationController = segue.destination as! UINavigationController
+        let personVC = navigationController.topViewController as! Person
+        let person = peopleDict[row]
+        personVC.personDict = person
+        
+        // if let d = (segue.destination as? Person) {
+        //     d.person = "asdfas"
+        // }
+//        let person =
+
+        // d?.person = peopleDict[row]
+
+       
     }
 }
