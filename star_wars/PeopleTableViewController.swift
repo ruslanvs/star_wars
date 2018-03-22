@@ -85,9 +85,13 @@ class PeopleTableViewController: UITableViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let navigationController = segue.destination as! UINavigationController
-        let personVC = navigationController.topViewController as! Person
+//        let navigationController = segue.destination as! UINavigationController
+//        let personVC = navigationController.topViewController as! Person
+
+        let personVC = segue.destination as! Person
+        
         let person = peopleDict[row]
+        
         personVC.personDict = person
         
         // if let d = (segue.destination as? Person) {

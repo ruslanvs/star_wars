@@ -31,10 +31,6 @@ class Person: UIViewController {
 //            print ( person )
             
             for item in person {
-//                if String(describing: item.value) != "(" && String(describing: item.value) != ")"{
-//                    print( item.value )
-//                }
-                
                 personKeysArr.append( String(describing: item.key) )
                 personValuesArr.append( String(describing: item.value) )
             }
